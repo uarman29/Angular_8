@@ -1,0 +1,56 @@
+<nav class = "navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+  <ul class = "navbar-nav ml-auto">
+    <li class = "nav-item">
+      <a class = "nav-link" href = "#">First</a>
+    </li>
+
+    <li class = "nav-item">
+      <a class = "nav-link" href = "#">Second</a>
+    </li>
+
+    <li class = "nav-item dropdown">
+        <a class = "nav-link dropdown-toggle" href = "#" id = "navbardrop" data-toggle = "dropdown">Third</a>
+
+        <div class = "dropdown-menu">
+          <a class = "dropdown-item" href = "#">ITEMS</a>
+        </div>
+    </li>
+  </ul>
+</nav>
+
+<div>
+  <label for = "Fname"></label>
+  <input type = "text" name = "Fname" [(ngModel)] = "name">
+  <p>{{name}}</p>
+</div>
+
+<p>Server {{serverName}} is {{serverStatus}} </p>
+<button (click) = "toggleServerStatus()">Toggle Server Status</button>
+
+<br/>
+<input type="text" placeholder = "Server Name" [(ngModel)] = "serverName">
+<input type="text" placeholder = "Server Name" [ngModel] = "serverName">
+
+<br />
+<label for = "Fname">First Name</label>
+<input type = "text" name = "Fname" placeholder = "First Name" [(ngModel)] = "firstName">
+<p>Name is {{firstName}}</p>
+<button [disabled] = "emptyCheck()" (click) = "clearName()">Reset</button>
+
+
+<h1 [ngStyle] = "{color:getColor()}">This is an example of ngif</h1>
+
+<p *ngIf = "flag; else elseblock">Flag is True</p>
+<ng-template #elseblock>
+  <p>Flag is False</p>
+</ng-template>
+
+<button (click) = "toggleFlag()">Toggle Flag</button>
+
+
+<h1>Fruit List</h1>
+<input type="text" placeholder="Fruit Name" [(ngModel)] = "fruitName">
+<button (click) = "add()">Add Fruit</button>
+
+<li *ngFor = "let fruit of fruits">{{fruit}}</li>
+
