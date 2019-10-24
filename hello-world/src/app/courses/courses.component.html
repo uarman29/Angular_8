@@ -1,0 +1,38 @@
+<h1>{{title}}</h1>
+<h2>{{courses.length + " courses"}}</h2>
+<ul>
+    <li *ngFor = "let course of courses">{{course}}</li>
+</ul>
+
+<img [src] = "imageUrl"/> <!--Property Binding-->
+<button class = "btn btn-primary" [class.active] = "isActive">Test</button><!--Bootstrap and class binding-->
+<button (click) = "f()">Do something</button> <!--Event binding-->
+<br />
+<button (click) = "mousePos($event)">Get Mouse Position</button> <!--Event object-->
+<br/>
+<label for="Enter">Enter Pressed: </label>
+<input type="text" name = "Enter" (keyup.enter) = "submit()"/><!--Event Filtering-->
+<br/>
+<label for="data">Data Inputted: </label>
+<input type="text" name = "data" (keyup.enter) = "logData($event)"/>
+
+<br/>
+<label for="data1">Data Inputted Template: </label>
+<input #data type="text" name = "data1" (keyup.enter) = "logDataTemplate(data.value)"/> <!--Template Variable-->
+
+<br/>
+<label for="data2">Data Inputted Two Way Binding: </label>
+<input type="text" name = "data2" [(ngModel)] = "bindedData"(keyup.enter) = "logDataTwoWay()"/> <!--Two Way Binding Variable-->
+
+<br /> <!--PIPES-->
+<h1>{{course.title | uppercase}}</h1>
+<p>{{course.students| number}}</p> 
+<p>{{course.rating| number:'2.1-1'}}</p>
+<p>{{course.price | currency}}</p>
+<p>{{course.releaseDate | date:'shortDate'}}</p>
+
+<!--CUSTOM PIPES-->
+<p>{{text | summary:10}}</p>
+
+
+

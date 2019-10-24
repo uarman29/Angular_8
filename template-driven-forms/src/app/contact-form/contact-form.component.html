@@ -1,0 +1,41 @@
+<form #f = "ngForm" (ngSubmit) = "submit(f)">
+    <div class = "form-group">
+        <label for="firstName">First Name: </label>
+        <input required minlength = "3" maxlength = "10" pattern = "[A-Za-z]+" ngModel name = "firstName" #firstName="ngModel" (change) = "log(firstName)" id = "firstName" type="text" class = "form-control"/>
+        <div class = "alert alert-danger" *ngIf = "firstName.touched && !firstName.valid">
+            <div *ngIf = "firstName.errors.required">First Name is required</div>
+            <div *ngIf = "firstName.errors.minlength">First Name too Short</div>
+            <div *ngIf = "firstName.errors.pattern">Not a valid name</div>
+        </div>
+        <!--Add ngModel to create form object then #firstName to create a template variable with that object as its value-->
+    </div>
+    <div class = "form-group">
+            <label for="comment">Comment: </label>
+            <textarea ngModel name = "comment" id = "comment" cols = "30" rows = "10" class = "form-control"></textarea>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input ngModel name = "isSubscribed" type="checkbox"> Subscribe
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label for="contactMethod">Contact Method</label>
+        <select ngModel name="contactMethod" id="contactMethod" class="form-control">
+            <option [value]="method.id" *ngFor = "let method of contactMethods">{{method.name}}</option>
+        </select>
+    </div>
+
+    <div class="radio">
+        <label for="">
+            <input ngModel type="radio" name="contactMethod" value = "1"> Email
+        </label>
+    </div>
+    <div class="radio">
+            <label for="">
+                <input ngModel type="radio" name="contactMethod" value = "2"> Phone
+            </label>
+        </div>
+    <p>{{f.value | json}}</p>
+    <button [disabled] = "!f.valid" class="btn btn-primary">Submit</button>
+</form>
